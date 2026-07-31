@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose= require("mongoose");
+const routerCategory = require("./routes/categories_router");
+const routerProduct = require("./routes/products_router");
 const app = express();
 
 require('dotenv').config();
@@ -9,6 +11,10 @@ const DB=process.env.DB_URL;
 
 app.use(express.json());
 
+
+
+app.use('/api/category' , routerCategory)
+app.use('/api/product' , routerProduct)
 mongoose.connect(DB).then(()=>{
     console.log("congratulations DB connected");
 }).catch((e)=>{

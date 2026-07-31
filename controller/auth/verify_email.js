@@ -21,8 +21,6 @@ if(user.verificationCode !==verificationCode){
 };
 
 if (user.verificationCodeExpiration<new Date()){
-
-    
     return res.status(400).json({
         status_code:"400",
         msg:"Expired Code",

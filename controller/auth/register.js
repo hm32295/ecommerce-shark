@@ -61,7 +61,7 @@ try {
         data:null});
         };
 
-
+        
 return res.status(201).json({
     status_code:"201",
     msg:"you registered successfully !!-- Please Check Your Email--!!",

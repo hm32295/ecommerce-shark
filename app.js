@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const PORT=process.env.PORT;
 const DB=process.env.DB_URL;
+const auth_router=require("./routes/auth_router");
 
 app.use(express.json());
 
@@ -14,6 +15,14 @@ mongoose.connect(DB).then(()=>{
 }).catch((e)=>{
     console.log(`sorry DB cann,t be connected ${e.message}`);
     process.exit(1)
+})
+
+app.use("/api/v1/auth",auth_router);
+
+app.get("/api/v1",(req,res)=>{
+    res.json({
+        msg:"hello"
+    })
 })
 
 app.listen(PORT,()=>{

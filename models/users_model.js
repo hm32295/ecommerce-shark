@@ -38,7 +38,18 @@ const user_model =mongoose.Schema({
         enum:["user","admin"],
         default:"user"
     },
+    isVerified: {
+    type: Boolean,
+    default: false
+    },
 
+    verificationCode: {
+    type: String
+    },
+
+    verificationCodeExpiration: {
+    type: Date
+    }
 },
 {timestamps:true},
 );

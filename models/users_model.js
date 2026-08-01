@@ -33,6 +33,14 @@ const user_model =mongoose.Schema({
             type:String
         }
     },
+    inactive:{
+        type:Boolean,
+        default:false
+    },
+    isBlocked: {
+    type: Boolean,
+    default: false,
+},
     role:{
         type:String,
         enum:["user","admin"],

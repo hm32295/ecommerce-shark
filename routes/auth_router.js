@@ -8,6 +8,7 @@ const resend_verificationCode_controller=require("../controller/auth/resend_veri
 const logOut_controller=require("../controller/auth/logOut");
 const forgetPassword_controller=require("../controller/auth/forget_password.js");
 const reset_password=require("../controller/auth/reset_password");
+const change_password=require("../controller/auth/change_password");
 
 const router=express.Router();
 
@@ -17,6 +18,7 @@ router.post("/verify-email",emailVerification_controller);
 router.post("/resend-verification-code",resend_verificationCode_controller);
 router.post("/log-out",logOut_controller);
 router.post("/forget-password",forgetPassword_controller);
-router.post("/reset-password",reset_password)
+router.post("/reset-password",reset_password);
+router.post("/change-password",change_password);
 
 module.exports=router;

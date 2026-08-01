@@ -18,7 +18,12 @@ const checkUser=  await usersCollection.findOne({email})
             msg: "please regist firstly"
         })};
 
-
+if (checkUser.isBlocked){
+    return res.status(403).json({
+            status_code :"403",
+            msg: "This User Are Blicked"
+        });
+};
 const authPassword = await bcrypt.compare(password,checkUser.password);
 
 if(!authPassword){

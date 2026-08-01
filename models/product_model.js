@@ -46,13 +46,20 @@ const product_model= mongoose.Schema({
             type:String,
             required:true,
             trim:true
-        }
-    }],
-    rating:{
-        type:Number,
-        default:0,
-        min:0,
-        max:5
+            },
+            rating: {
+                type:Number,
+                default:0,
+                min:0,
+                max:5
+                
+            }
+        }],
+        rating:{
+            type:Number,
+            default:0,
+            min:0,
+            max:5
     },
 },{timestamps:true},
 );

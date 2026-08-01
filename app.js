@@ -20,7 +20,7 @@ app.use("/api/coupons", couponRouter);
 mongoose.connect(DB).then(()=>{
     console.log("congratulations DB connected");
 }).catch((e)=>{
-    console.log(`sorry DB cann,t be connected ${e.message}`);
+    console.log(`sorry DB can not be connected ${e.message}`);
     process.exit(1)
 })
 

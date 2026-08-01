@@ -30,7 +30,7 @@ const getProduct = async (req, res) => {
         if(max_price) filter.price.$lte = Number(max_price)
     }
     try {
-        const products = await product_model.find(filter, 'title description price stock  category  brand image')
+        const products = await product_model.find(filter, 'title reviews description price stock  category  brand image')
             .populate('category', 'name')
         res.status(200).json(responseToFront('done' ,200 , products))
     } catch (error) {

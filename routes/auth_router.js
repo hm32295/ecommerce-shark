@@ -1,6 +1,7 @@
 const express=require("express");
 const upload=require("../middlewares/multer");
-const isLoginMiddleware = require("../middlewares/is_login");
+const isLoginMiddleware=require("../middlewares/is_login");
+const checkRole_middlware=require("../middlewares/check_role")
 
 const register_controller=require("../controller/auth/register");
 const login_controller=require("../controller/auth/login");
@@ -21,6 +22,6 @@ router.post("/resend-verification-code",resend_verificationCode_controller);
 router.post("/log-out",logOut_controller);
 router.post("/forget-password",forgetPassword_controller);
 router.post("/reset-password",reset_password);
-router.post("/change-password",is_login_middleware,change_password);
+router.post("/change-password",isLoginMiddleware,change_password);
 
 module.exports=router;

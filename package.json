@@ -1,11 +1,12 @@
 {
-  "name": "ECOMMERCE-SHARK",
+  "name": "ecommerce-shark",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "start:dev": "nodemon app.js"
+    "start:dev": "nodemon app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +18,18 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.8.1",
+    "mongodb": "^7.5.0",
+    "mongoose": "^9.9.1",
     "multer": "^2.2.0",
-    "multer-storage-cloudinary": "^4.0.0",
+    "multer-storage-cloudinary": "^2.2.1",
     "nodemon": "^3.1.14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hm32295/ecommerce-shark.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hm32295/ecommerce-shark/issues"
+  },
+  "homepage": "https://github.com/hm32295/ecommerce-shark#readme"
 }

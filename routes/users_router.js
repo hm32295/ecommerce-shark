@@ -10,16 +10,12 @@ const upload=require("../middlewares/multer");
 const isLoginMiddleware=require("../middlewares/is_login");
 const inActive_controller=require("../controller/user/delete_my_account");
 const activate_account_controller = require("../controller/user/activate_account");
-
 const delete_user=require("../controller/user/delete_user");
-
-
 
 routerUsers.get('/',is_login_middleware,check_role, getAllUser)
 routerUsers.get('/:userId', getSingleUser)
 routerUsers.post('/block/:userId',is_login_middleware,check_role,blockUser)
 routerUsers.post('/un-block/:userId',is_login_middleware,check_role, unBlockUser)
-
 routerUsers.patch("/inactive-account",isLoginMiddleware,inActive_controller);
 routerUsers.post("/activate-account",activate_account_controller);
 routerUsers.delete("/delete-user/:id",isLoginMiddleware,check_role,delete_user);

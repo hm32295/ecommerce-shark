@@ -17,19 +17,18 @@ app.use(express.json());
 
 
 
-app.use('/api/users', routerUsers)
+app.use('/api/v1/users', routerUsers)
+app.use('/api/v1/category' , routerCategory)
+app.use('/api/v1/product', routerProduct)
+app.use("/api/v1/coupons", couponRouter);
+app.use("/api/v1/auth", auth_router);
 
-app.use('/api/category' , routerCategory)
-app.use('/api/product', routerProduct)
-app.use("/api/coupons", couponRouter);
 mongoose.connect(DB).then(()=>{
     console.log("congratulations DB connected");
 }).catch((e)=>{
     console.log(`sorry DB can not be connected ${e.message}`);
     process.exit(1)
 })
-
-app.use("/api/v1/auth",auth_router);
 
 app.get("/api/v1",(req,res)=>{
     res.json({

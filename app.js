@@ -3,6 +3,7 @@ const mongoose= require("mongoose");
 const routerCategory = require("./routes/categories_router");
 const routerProduct = require("./routes/products_router");
 const couponRouter = require("./routes/coupon_router");
+const routerUsers = require("./routes/users_router");
 const app = express();
 
 require('dotenv').config();
@@ -13,6 +14,8 @@ const DB=process.env.DB_URL;
 app.use(express.json());
 
 
+
+app.use('/api/users', routerUsers)
 
 app.use('/api/category' , routerCategory)
 app.use('/api/product', routerProduct)

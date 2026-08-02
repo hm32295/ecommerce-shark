@@ -1,9 +1,9 @@
 const express = require("express");
 const mongoose= require("mongoose");
 const app = express();
-
+const cors = require('cors')
 require('dotenv').config();
-
+const orderRouter = require("./routes/orders_router")
 const PORT=process.env.PORT;
 const DB=process.env.DB_URL;
 
@@ -15,7 +15,8 @@ mongoose.connect(DB).then(()=>{
     console.log(`sorry DB cann,t be connected ${e.message}`);
     process.exit(1)
 })
-
+app.use(cors())
+app.use('/api', orderRouter)
 
 app.listen(PORT,()=>{
     console.log(`----Server Running ${PORT} `);

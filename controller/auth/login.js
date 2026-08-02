@@ -18,12 +18,6 @@ const checkUser=  await usersCollection.findOne({email})
             msg: "please regist firstly"
         })};
 
-if (checkUser.isBlocked){
-    return res.status(403).json({
-            status_code :"403",
-            msg: "This User Are Blicked"
-        });
-};
 const authPassword = await bcrypt.compare(password,checkUser.password);
 
 if(!authPassword){
@@ -32,7 +26,19 @@ if(!authPassword){
             msg: "please add the correct password"
         })
     };
-    
+
+if (checkUser.isBlocked){
+    return res.status(403).json({
+            status_code :"403",
+            msg: "This User Are Blicked"
+        });
+};
+if (checkUser.inactive){
+    return res.status(403).json({
+            status_code :"403",
+            msg: "This account is inactive"
+        });
+}   
 if (!checkUser.isVerified) {
     return res.status(403).json({
         status_code: "403",

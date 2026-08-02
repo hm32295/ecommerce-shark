@@ -4,9 +4,10 @@ const routerCategory = require("./routes/categories_router");
 const routerProduct = require("./routes/products_router");
 const couponRouter = require("./routes/coupon_router");
 const routerUsers = require("./routes/users_router");
+require('dotenv').config();
 const app = express();
 
-require('dotenv').config();
+
 
 const PORT=process.env.PORT;
 const DB=process.env.DB_URL;

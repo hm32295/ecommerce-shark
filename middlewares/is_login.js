@@ -1,5 +1,6 @@
-const {jwtDecode}=require("jwt-decode")
-is_login_middleware= async(req,res,next)=>{
+const { jwtDecode } = require("jwt-decode")
+
+const is_login_middleware = async(req,res,next)=>{
     try{
         const token=req.cookies.token;
         if (!token){

@@ -33,12 +33,31 @@ const user_model =mongoose.Schema({
             type:String
         }
     },
+    inactive:{
+        type:Boolean,
+        default:false
+    },
+    isBlocked: {
+    type: Boolean,
+    default: false,
+},
     role:{
         type:String,
         enum:["user","admin"],
         default:"user"
     },
+    isVerified: {
+    type: Boolean,
+    default: false
+    },
 
+    verificationCode: {
+    type: String
+    },
+
+    verificationCodeExpiration: {
+    type: Date
+    }
 },
 {timestamps:true},
 );

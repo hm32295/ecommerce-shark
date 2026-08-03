@@ -19,7 +19,7 @@ mongoose.connect(DB).then(()=>{
 
 app.use("/api/v1/auth",auth_router);
 
-app.get("/api/v1",(req,res)=>{
+app.get("/",(req,res)=>{
     res.json({
         msg:"hello"
     })

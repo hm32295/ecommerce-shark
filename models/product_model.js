@@ -1,10 +1,10 @@
 const mongoose= require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const product_model=mongoose.Schema({
+const product_model= mongoose.Schema({
     title:{
         type:String,
-        required:true,
+        required:true, 
         trim:true
     },
     description:{
@@ -46,13 +46,20 @@ const product_model=mongoose.Schema({
             type:String,
             required:true,
             trim:true
-        }
-    }],
-    rating:{
-        type:Number,
-        default:0,
-        min:0,
-        max:5
+            },
+            rating: {
+                type:Number,
+                default:0,
+                min:0,
+                max:5
+                
+            }
+        }],
+        rating:{
+            type:Number,
+            default:0,
+            min:0,
+            max:5
     },
 },{timestamps:true},
 );

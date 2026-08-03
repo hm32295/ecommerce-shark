@@ -11,6 +11,7 @@ const logOut_controller=require("../controller/auth/logOut");
 const forgetPassword_controller=require("../controller/auth/forget_password.js");
 const reset_password=require("../controller/auth/reset_password");
 const change_password=require("../controller/auth/change_password");
+const is_login_middleware = require("../middlewares/is_login");
 
 const router=express.Router();
 

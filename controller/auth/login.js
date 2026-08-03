@@ -68,6 +68,7 @@ return res.status(200).json({
                 email: checkUser.email,
                 phone: checkUser.phone,
                 adress: checkUser.adress,
+                image: checkUser.image
             },
         },
     );

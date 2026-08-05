@@ -9,12 +9,15 @@ const cart_model=mongoose.Schema({
         required:true
     },
     products:[{
+        
         product:{
+
             type:ObjectId,
             ref:"Products",
             required:true,
         },
         quantity:{
+
             type:Number,
             required:true,
             default:1,

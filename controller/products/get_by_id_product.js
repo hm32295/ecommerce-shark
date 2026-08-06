@@ -6,7 +6,7 @@ const getSingleProduct = async (req, res) => {
     
 
     try {
-        const product =await product_model.findById(_id)
+        const product =await product_model.findById(_id).populate('category' ,'name')
         res.status(200).json(responseToFront('done', 200 ,product))
     } catch (error) {
         res.status(500).json(responseToFront(error.message , 500))

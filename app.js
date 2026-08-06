@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose= require("mongoose");
 const routerCategory = require("./routes/categories_router");
 const routerProduct = require("./routes/products_router");
@@ -6,7 +7,9 @@ const couponRouter = require("./routes/coupon_router");
 const routerUsers = require("./routes/users_router");
 require('dotenv').config();
 const app = express();
+const cookieParser = require("cookie-parser");
 
+app.use(cookieParser());
 
 
 const PORT=process.env.PORT;
@@ -15,6 +18,12 @@ const auth_router=require("./routes/auth_router");
 
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 
 app.use('/api/v1/users', routerUsers)

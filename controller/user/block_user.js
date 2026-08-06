@@ -6,7 +6,11 @@ const blockUser = async (req, res) => {
     try {
         const user = await users_model.findById( userId , "isBlocked");
         if (!user) return res.status(404).json(responseToFront('not found'))
-        user.isBlocked = true
+        if (user.isBlocked) {
+            user.isBlocked = false
+        } else {
+            user.isBlocked = true
+        }
         await user.save()
         res.status(200).json(responseToFront('done' ,200, user))
     } catch (error) {

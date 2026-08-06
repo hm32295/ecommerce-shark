@@ -10,6 +10,15 @@ const user_model =mongoose.Schema({
         required:true,
         unique:true
     },
+    newEmail:{
+        type:String,
+    },
+    newEmailVerificationCode:{
+        type:String
+    },
+    newEmailVerificationCodeExpiration:{
+    type: Date
+    },
     password:{
         type:String,
         required:true

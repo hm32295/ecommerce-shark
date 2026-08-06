@@ -13,6 +13,8 @@ const activate_account_controller = require("../controller/user/activate_account
 const delete_user=require("../controller/user/delete_user");
 const updateProfile_controller=require("../controller/user/update_profile");
 const updateRole_controller=require("../controller/user/update_userRole");
+const changePassword_controller=require("../controller/user/change_email");
+const verifyNewEmail_controller=require("../controller/user/verify_new_email");
 
 routerUsers.get('/',is_login_middleware,check_role, getAllUser)
 routerUsers.get('/:userId', getSingleUser)
@@ -23,6 +25,7 @@ routerUsers.post("/activate-account",activate_account_controller);
 routerUsers.delete("/delete-user/:id",isLoginMiddleware,check_role,delete_user);
 routerUsers.patch("/update-role/:id",isLoginMiddleware,check_role,updateRole_controller);
 routerUsers.put("/update-profile",isLoginMiddleware,upload.single("image"),updateProfile_controller);
-
+routerUsers.patch("/change-email",isLoginMiddleware,changePassword_controller);
+routerUsers.post("verify-new-email",is_login_middleware,verifyNewEmail_controller)
 
 module.exports = routerUsers;

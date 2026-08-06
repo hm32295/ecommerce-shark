@@ -1,13 +1,13 @@
 const usersCollection=require("../../models/users_model");
 const update_profile=async(req,res)=>{
-    const{name,email,phone,secondaryPhone,adress,image}=req.body;
-            if (!name || !email || !phone || !adress) {
+    const{name,phone,secondaryPhone,adress,image}=req.body;
+            if (!name || !phone || !adress) {
                 return res.status(400).json({
                 status_code: "400",
                 msg: "All Fields Is Required",
                 data: null
             });
-        }
+        };
         const userId= req.user.id;
         const user= await usersCollection.findById(userId)
 

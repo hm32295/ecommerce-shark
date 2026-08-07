@@ -39,15 +39,13 @@ mongoose.connect(DB).then(()=>{
     process.exit(1)
 })
 
-app.get("/api/v1",(req,res)=>{
+app.get("/",(req,res)=>{
     res.json({
         msg:"hello"
     })
 })
 
-app.listen(PORT,()=>{
-    console.log(`----Server Running ${PORT} `);
-})
+module.exports = app
 
 
 

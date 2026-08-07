@@ -3,7 +3,7 @@ const bcrypt=require("bcrypt");
 const transporter=require("../../confg/transporter_mail")
 
 const register=async(req,res)=>{
-    const{name,email,password,phone,secondaryPhone,adress}=req.body;
+    const{name,email,password,phone,secondaryPhone,adress,image}=req.body;
     if (!name||!email||!password||!phone||!adress) {
         return res.status(401).json({
             status_code : "401",
@@ -32,6 +32,7 @@ await usersCollection.create({
         phone,
         secondaryPhone,
         adress,
+        image,
         verificationCode,
         verificationCodeExpiration :new Date (
             Date.now() + 10*60*1000

@@ -10,11 +10,19 @@ const user_model =mongoose.Schema({
         required:true,
         unique:true
     },
+    newEmail:{
+        type:String,
+    },
+    newEmailVerificationCode:{
+        type:String
+    },
+    newEmailVerificationCodeExpiration:{
+    type: Date
+    },
     password:{
         type:String,
         required:true
     },
-
     phone:{
         type:String,
         required:true
@@ -45,6 +53,9 @@ const user_model =mongoose.Schema({
         type:String,
         enum:["user","admin"],
         default:"user"
+    },
+    image:{
+        type:String,
     },
     isVerified: {
     type: Boolean,

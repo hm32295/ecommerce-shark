@@ -13,9 +13,10 @@ const reset_password=require("../controller/auth/reset_password");
 const change_password=require("../controller/auth/change_password");
 const is_login_middleware = require("../middlewares/is_login");
 
+
 const router=express.Router();
 
-router.post("/register",upload.single("images"),register_controller);
+router.post("/register",upload.single("image"),register_controller);
 router.post("/login",login_controller);
 router.post("/verify-email",emailVerification_controller);
 router.post("/resend-verification-code",resend_verificationCode_controller);

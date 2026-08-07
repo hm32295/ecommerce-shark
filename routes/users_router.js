@@ -11,9 +11,13 @@ const isLoginMiddleware=require("../middlewares/is_login");
 const inActive_controller=require("../controller/user/delete_my_account");
 const activate_account_controller = require("../controller/user/activate_account");
 const delete_user=require("../controller/user/delete_user");
+const updateProfile_controller=require("../controller/user/update_profile");
+const updateRole_controller=require("../controller/user/update_userRole");
+const changePassword_controller=require("../controller/user/change_email");
+const verifyNewEmail_controller=require("../controller/user/verify_new_email");
 
-// routerUsers.get('/', getAllUser)
-routerUsers.get('/',is_login_middleware,check_role, getAllUser)
+
+routerUsers.get('/',is_login_middleware,check_role,getAllUser)
 routerUsers.get('/:userId', getSingleUser)
 routerUsers.post('/block/:userId',is_login_middleware,check_role,blockUser)
 routerUsers.post('/un-block/:userId',is_login_middleware,check_role, unBlockUser)
@@ -21,7 +25,9 @@ routerUsers.patch("/inactive-account",isLoginMiddleware,inActive_controller);
 routerUsers.post("/activate-account",activate_account_controller);
 // routerUsers.delete("/delete-user/:id",delete_user);
 routerUsers.delete("/delete-user/:id",isLoginMiddleware,check_role,delete_user);
+routerUsers.patch("/update-role/:id",isLoginMiddleware,check_role,updateRole_controller);
+routerUsers.put("/update-profile",isLoginMiddleware,upload.single("image"),updateProfile_controller);
+routerUsers.patch("/change-email",isLoginMiddleware,changePassword_controller);
+routerUsers.post("verify-new-email",is_login_middleware,verifyNewEmail_controller)
 
-
-
-module.exports = routerUsers
+module.exports = routerUsers;

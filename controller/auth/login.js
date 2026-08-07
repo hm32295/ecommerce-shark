@@ -1,6 +1,6 @@
 const usersCollection=require("../../models/users_model");
 const bcrypt=require("bcrypt");
-const sign=require('jwt-encode');
+const jwt = require("jsonwebtoken");
 
 
 const login = async(req,res)=>{
@@ -49,20 +49,26 @@ if (!checkUser.isVerified) {
 //if user registered but not entered verification code//
 
 const secret_key=process.env.JWT_SECRET;
-const jwt= await sign({
-    name: checkUser.name,
-    email : checkUser.email,
-    role: checkUser.role,
-    exp: Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60)
-},secret_key);
+const token = jwt.sign(
+    {
+        id: checkUser._id,
+        name: checkUser.name,
+        email: checkUser.email,
+        role: checkUser.role,
+    },
+        secret_key,
+    {
+        expiresIn: "7d",
+    }
+);
 
-res.cookie("token", jwt,{httpOnly:true,path:"/",secure:false})
+res.cookie("token", token,{httpOnly: true,path: "/",secure: false})
 
 return res.status(200).json({
             status_code :"200",
             msg: "You Logged in  Succesfully",
             data:{
-                token:jwt,
+                token:token,
                 id: checkUser._id,
                 name: checkUser.name,
                 email: checkUser.email,

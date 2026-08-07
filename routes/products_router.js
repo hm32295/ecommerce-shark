@@ -20,6 +20,7 @@ routerProduct.get('/:id' ,getSingleProduct)
 routerProduct.put('/:id' ,is_login_middleware,check_role,editProduct)
 routerProduct.delete('/:id',is_login_middleware,check_role, deleteProduct)
 
+
 routerProduct.get("/:productId/reviews", getReviews);
 routerProduct.post("/:productId/reviews", addReview);
 routerProduct.delete("/:productId/reviews/:reviewId", deleteReview);

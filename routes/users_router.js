@@ -16,7 +16,7 @@ const updateRole_controller=require("../controller/user/update_userRole");
 const changePassword_controller=require("../controller/user/change_email");
 const verifyNewEmail_controller=require("../controller/user/verify_new_email");
 
-routerUsers.get('/',is_login_middleware,check_role, getAllUser)
+routerUsers.get('/',is_login_middleware,check_role,getAllUser)
 routerUsers.get('/:userId', getSingleUser)
 routerUsers.post('/block/:userId',is_login_middleware,check_role,blockUser)
 routerUsers.post('/un-block/:userId',is_login_middleware,check_role, unBlockUser)

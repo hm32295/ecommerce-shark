@@ -2,6 +2,8 @@ const responseToFront = require("../../helper/responseToFront");
 const product_model = require('../../models/product_model')
 
 const createProduct = async (req, res) => {
+    const image = req.file?.path
+     
     try {
 
         const {
@@ -11,7 +13,6 @@ const createProduct = async (req, res) => {
             stock,
             category,
             brand,
-            image
         } = req.body;
 
         if (!title || !description || !stock || !category) {

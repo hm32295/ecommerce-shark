@@ -4,7 +4,7 @@ const couponSchema = require("../../models/coupon.model")
 const getAllCoupons = async (req, res) => {
     try {
         const coupons = await couponSchema.find({})
-        res.status(200).json(responseToFront('done' , 200 , coupons))
+        res.status(200).json(responseToFront('done' , 200 , coupons,await couponSchema.find({}).countDocuments()))
     } catch (error) {
         res.status(500).json(responseToFront(error.message, 500))
     }

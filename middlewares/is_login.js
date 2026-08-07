@@ -11,7 +11,6 @@ const is_login_middleware = async(req,res,next)=>{
             };
             const decoded = jwtDecode(token);
             req.user = decoded;
-            //TO USE ANY KEY WITH ANY OTHER CONTROLLER
             next()
 
         }catch(error){

@@ -8,11 +8,14 @@ const getProduct = async (req, res) => {
             brand,
             min_price,
             max_price,
-            title
-        } = req.query;
+            title,
+            page = 1,
+            size = 5
+    } = req.query;
+    
     let filter = {};
     if(category) filter.category = category
-    if(brand) filter.brand = brand
+    if (brand) filter.brand = brand
     if (title) {
         if (title) {
             filter.$or = [
@@ -31,8 +34,9 @@ const getProduct = async (req, res) => {
     }
     try {
         const products = await product_model.find(filter, 'title reviews description price stock  category  brand image')
+            .skip((page- 1)*size).limit(size)
             .populate('category', 'name')
-        res.status(200).json(responseToFront('done' ,200 , products))
+        res.status(200).json(responseToFront('done' ,200 , products , await product_model.find({}).countDocuments()))
     } catch (error) {
         res.status(500).json(responseToFront(error.message, 500))
     }

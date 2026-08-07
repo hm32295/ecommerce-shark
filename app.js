@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const mongoose= require("mongoose");
@@ -5,7 +6,6 @@ const routerCategory = require("./routes/categories_router");
 const routerProduct = require("./routes/products_router");
 const couponRouter = require("./routes/coupon_router");
 const routerUsers = require("./routes/users_router");
-require('dotenv').config();
 const app = express();
 const cookieParser = require("cookie-parser");
 

@@ -13,11 +13,11 @@ const is_login_middleware = require('../middlewares/is_login');
 const upload = require('../middlewares/multer');
 
 
-routerProduct.post('/' ,is_login_middleware,check_role,createProduct)
+routerProduct.post('/' ,upload.single("image"),is_login_middleware,check_role,createProduct)
 
 routerProduct.get('/' ,getProduct)
 routerProduct.get('/:id' ,getSingleProduct)
-routerProduct.put('/:id' ,is_login_middleware,check_role,editProduct)
+routerProduct.put('/:id' ,upload.single("image") ,is_login_middleware,check_role,editProduct)
 routerProduct.delete('/:id',is_login_middleware,check_role, deleteProduct)
 
 routerProduct.get("/:productId/reviews", getReviews);

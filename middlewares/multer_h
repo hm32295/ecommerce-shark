@@ -1,0 +1,29 @@
+require('dotenv').config();
+
+const cloudinary = require("cloudinary").v2;
+  
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+// console.log("CONFIG:", cloudinary.config());
+
+async function testCloudinary() {
+  console.log(process.env.DB_USER_NAME);
+  
+  try {
+    const result = await cloudinary.uploader.upload("./test.jpg", {
+      folder: "sharks",
+    });
+
+    // console.log("UPLOAD SUCCESS");
+    // console.log(result.secure_url);
+  } catch (error) {
+    // console.log("UPLOAD ERROR");
+    // console.log(error);
+  }
+}
+
+testCloudinary();

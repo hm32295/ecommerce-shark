@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
@@ -12,6 +13,7 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
 
+const Router = require("./routes/orders_router")
 const PORT=process.env.PORT;
 const DB=process.env.DB_URL;
 const auth_router=require("./routes/auth_router");
@@ -38,6 +40,8 @@ mongoose.connect(DB).then(()=>{
     console.log(`sorry DB can not be connected ${e.message}`);
     process.exit(1)
 })
+app.use(cors())
+app.use('/api', Router)
 
 app.get("/",(req,res)=>{
     res.json({

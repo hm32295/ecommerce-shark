@@ -31,7 +31,7 @@ const order_model=mongoose.Schema({
         min:0,
         required:true
     },
-    shippingAdress:{
+    shippingAddress:{
         adress:{
         city:{
             type:String,
@@ -82,7 +82,7 @@ const order_model=mongoose.Schema({
                 "Dilevered",
                 "cancelled"
             ],
-            default:"pending"
+            default:"Pending"
         },
         updatedAt: {
         type: Date,

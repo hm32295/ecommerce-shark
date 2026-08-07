@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require("express");
 const cors = require("cors");
 const mongoose= require("mongoose");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const routerCategory = require("./routes/categories_router");
 const routerProduct = require("./routes/products_router");

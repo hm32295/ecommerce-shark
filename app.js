@@ -18,6 +18,7 @@ const PORT=process.env.PORT;
 const DB=process.env.DB_URL;
 const auth_router=require("./routes/auth_router");
 const wishListRouter = require('./routes/wishlist_router');
+const routerDashboard = require('./routes/dashboard');
 app.use(
   cors({
     origin: true,
@@ -35,6 +36,7 @@ app.use('/api/v1/category' , routerCategory)
 app.use('/api/v1/product', routerProduct)
 app.use("/api/v1/coupons", couponRouter);
 app.use("/api/v1/auth", auth_router);
+app.use("/api/v1/dashboard", routerDashboard);
 app.use("/api/v1/wish_list", wishListRouter);
 
 mongoose.connect(DB).then(()=>{
@@ -52,8 +54,8 @@ app.get("/",(req,res)=>{
     })
 })
 
-module.exports = app
-// app.listen(3000)
+// module.exports = app
+app.listen(3000)
 
 
 

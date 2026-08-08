@@ -34,8 +34,13 @@ mongoose.connect(DB).then(()=>{
     console.log(`sorry DB can not be connected ${e.message}`);
     process.exit(1)
 })
-app.use(cors())
-app.use('/api', Router)
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
+app.use('/api/v1/order', Router)
 
 app.get("/",(req,res)=>{
     res.json({

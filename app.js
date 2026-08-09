@@ -21,7 +21,7 @@ const wishListRouter = require('./routes/wishlist_router');
 const routerDashboard = require('./routes/dashboard');
 app.use(
   cors({
-    origin: true,
+    origin: ['https://ecommerce-front-shark.vercel.app/'],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   })

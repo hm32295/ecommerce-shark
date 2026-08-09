@@ -4,8 +4,9 @@ const cartSchema = require("../../models/cart_model")
 const createOrder= async(req , res)=>{
 
 try {
-       const userId = req.user.id;
-const {paymentMethod , shippingAddress }=req.body;
+    //    const userId = req.user._id;
+
+const { userId ,paymentMethod , shippingAddress }=req.body;
 const userCart =await cartSchema.findOne({
     user: userId
 }).populate("products.product")

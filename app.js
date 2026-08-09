@@ -18,6 +18,7 @@ const PORT=process.env.PORT;
 const DB=process.env.DB_URL;
 const auth_router=require("./routes/auth_router");
 const wishListRouter = require('./routes/wishlist_router');
+const cartRoute = require("./routes/cart_router")
 app.use(
   cors({
     origin: true,
@@ -30,6 +31,12 @@ app.use(express.json());
 
 app.use(cookieParser());
 
+mongoose.connect(DB).then(()=>{
+    console.log("congratulations DB connected");
+}).catch((e)=>{
+    console.log(`sorry DB can not be connected ${e.message}`);
+    process.exit(1)
+})
 app.use('/api/v1/users', routerUsers)
 app.use('/api/v1/category' , routerCategory)
 app.use('/api/v1/product', routerProduct)
@@ -37,23 +44,18 @@ app.use("/api/v1/coupons", couponRouter);
 app.use("/api/v1/auth", auth_router);
 app.use("/api/v1/wish_list", wishListRouter);
 
-mongoose.connect(DB).then(()=>{
-    console.log("congratulations DB connected");
-}).catch((e)=>{
-    console.log(`sorry DB can not be connected ${e.message}`);
-    process.exit(1)
-})
 
-app.use('/api/v1/order', Router)
+app.use('/api/v1/orders', Router)
+app.use('/api/v1/', cartRoute)
 
 app.get("/",(req,res)=>{
     res.json({
         msg:"hello"
     })
 })
-
+ app.listen(3000)
 module.exports = app
-// app.listen(3000)
+
 
 
 

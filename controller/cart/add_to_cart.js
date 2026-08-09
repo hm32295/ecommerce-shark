@@ -4,10 +4,10 @@ const addToCart = async(req, res) => {
         const { userId, productId, count } = req.body;
 
         const cart = await Cart.create({
-        userId,
+        user:userId,
         products: [{
-            productId,
-            count,
+            product: productId,
+          quantity: count
             }],
             total:0
         });
@@ -15,7 +15,8 @@ const addToCart = async(req, res) => {
        console.log(cart)
 
        return res.status(201).json({
-        message:"product added successfully"
+        message:"product added successfully",
+        cart
        });
 
     }

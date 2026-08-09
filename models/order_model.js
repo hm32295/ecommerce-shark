@@ -32,7 +32,7 @@ const order_model=mongoose.Schema({
         required:true
     },
     shippingAddress:{
-        adress:{
+        address:{
         city:{
             type:String,
             required:true

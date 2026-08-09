@@ -23,9 +23,6 @@ const cartRoutes = require("./routes/cart_router");
 
 app.use("/cart", cartRoutes);
 
-const paymentRoutes = require("./routes/payment_router");
-
-app.use("/payment", paymentRoutes);
 
 app.listen(PORT,()=>{
     console.log(`----Server Running ${PORT} `);
